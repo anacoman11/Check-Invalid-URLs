@@ -34,6 +34,7 @@ git clone <repository-url>
 5. Click Clone.
 
 ## Step 2: Navigate to the Project Directory
+Open the Terminal
 Navigate to the project directory:
 
 ```bash
