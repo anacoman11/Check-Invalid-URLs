@@ -4,6 +4,8 @@ This Python script checks markdown files for invalid URLs. The invalid URLs are 
 
 ## Requirements
 
+Make sure that you have the VPN off before running the script. 
+
 Before running the script, make sure you have the following installed:
 
 - Python 3.12
