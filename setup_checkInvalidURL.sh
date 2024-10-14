@@ -1,47 +1,23 @@
 #!/bin/bash
 
-# Obține calea absolută a scriptului Python
 repoPath=$(pwd)
 pythonScript="$repoPath/checkInvalidURLs.py"
 
-# Verificăm dacă scriptul Python există
 if [[ ! -f $pythonScript ]]; then
-    echo "Eroare: Scriptul checkInvalidURLs.py nu a fost găsit în $repoPath."
+    echo "Error: Script checkInvalidURLs.py not found in $repoPath."
     exit 1
 fi
 
-# Verificăm sistemul de operare
-case "$OSTYPE" in
-  linux-gnu* | darwin*)
-    # Pentru Linux și macOS
-    profileFile="$HOME/.bashrc"
-    aliasCommand="alias checkInvalidURL='python3 \"$pythonScript\"'"
-    ;;
-  msys* | mingw*)
-    # Pentru Windows
-    profileFile="$HOME/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
-    aliasCommand="function checkInvalidURL { python3 \"$pythonScript\" }"
-    ;;
-  *)
-    echo "Eroare: Sistemul de operare nu este suportat."
-    exit 1
-    ;;
-esac
+profileFile="$HOME/.bashrc"
+aliasCommand="alias checkInvalidURL='python3 \"$pythonScript\"'"
 
-# Adăugăm aliasul în fișierul de profil corespunzător
 if grep -q "checkInvalidURL" "$profileFile"; then
-    echo "Aliasul checkInvalidURL este deja adăugat în $profileFile."
+    echo "The checkInvalidURL alias has already been added to $profileFile."
 else
     echo "$aliasCommand" >> "$profileFile"
-    echo "Aliasul checkInvalidURL a fost adăugat în $profileFile."
+    echo "The checkInvalidURL alias has been added to $profileFile."
 fi
 
-# Aplicăm modificările
-if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
-    source "$profileFile"
-else
-    # Pentru Windows, utilizatorul trebuie să-și repornească PowerShell-ul
-    echo "Pentru a aplica modificările, închide și redeschide PowerShell."
-fi
+source "$profileFile"
 
-echo "Setup-ul este complet! Poți folosi comanda 'checkInvalidURL' din orice director."
+echo "The setup is complete! You can use the 'checkInvalidURL' command from any directory."
