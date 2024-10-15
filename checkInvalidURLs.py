@@ -64,10 +64,6 @@ def check_urls_in_directory(directory):
 
         if not urls:
             print(f"No URLs found in {file_path}.")
-            all_invalid_urls.append({
-                'File': file_path,
-                'Invalid URL': 'No URL found'
-            })
             continue
 
         for url in urls:
