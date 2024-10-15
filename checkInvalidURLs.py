@@ -6,6 +6,7 @@ import requests
 import pandas as pd
 import platform
 
+
 def extract_urls_from_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.read()
@@ -15,9 +16,6 @@ def extract_urls_from_file(file_path):
 
     html_url_pattern = r'href="(https?://[^\s<>\)\"]+)"'
     urls += re.findall(html_url_pattern, content)
-
-    bitly_pattern = r'(https?://bit\.ly/[^\s<>\)\"]+)'
-    urls += re.findall(bitly_pattern, content)
 
     cleaned_urls = [url.strip(').,<>;') for url in urls]
     return cleaned_urls
@@ -63,6 +61,14 @@ def check_urls_in_directory(directory):
     for file_path in files_with_urls:
         print(f"\nChecking file: {file_path}")
         urls = extract_urls_from_file(file_path)
+
+        if not urls:
+            print(f"No URLs found in {file_path}.")
+            all_invalid_urls.append({
+                'File': file_path,
+                'Invalid URL': 'No URL found'
+            })
+            continue
 
         for url in urls:
             status_code = check_url_status(url)
