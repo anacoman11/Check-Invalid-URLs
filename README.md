@@ -54,6 +54,7 @@ chmod +x setup_checkInvalidURL.sh
 ```
 
 4. Restart your terminal
+   
 After these steps, you can run the script from any directory by simply typing:
 ```bash
 checkInvalidURL
@@ -72,6 +73,7 @@ cd Check-Invalid-URLs
 ```
 
 3. Close and reopen PowerShell to apply the changes.
+   
 After these steps, you can run the script from any directory by simply typing:
 ```bash
 checkInvalidURL
