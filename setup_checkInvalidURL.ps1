@@ -12,7 +12,7 @@ if ($OS_TYPE -like "*Windows*") {
     $profileFile = Join-Path -Path $HOME -ChildPath "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
     if (-Not (Test-Path -Path $profileFile)) {
-        Write-Host "Fișierul $profileFile nu există. Îl creăm acum..."
+        Write-Host "The file $profileFile doesn't exist. We create it now..."
         New-Item -ItemType File -Path $profileFile -Force | Out-Null
     }
 
