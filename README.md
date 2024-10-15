@@ -35,22 +35,44 @@ git clone <repository-url>
 4. Choose the local path where you want to clone the repository.
 5. Click Clone.
 
-## Step 2: Navigate to the Project Directory
-Open the Terminal
-Navigate to the project directory:
+## Step 2: Run the setup script 
+### For Linux/macOS (Bash)
 
+1. Navigate to the project directory:
 ```bash
 cd Check-Invalid-URLs
 ```
 
-## Step 3: Run the Script
-Run the script using Python. The script will prompt you to provide:
-
-Directory Path: The directory containing markdown (.md) files.
-
-Manifest Path: The path to the manifest.json file.
-
+2. Give execution permissions to the setup script (only needed the first time):
 ```bash
-python3 checkInvalidURLs.py
+chmod +x setup_checkInvalidURL.sh
 ```
 
+3. Run the Bash setup script:
+```bash
+./setup_checkInvalidURL.sh
+```
+
+4. Restart your terminal
+After these steps, you can run the script from any directory by simply typing:
+```bash
+checkInvalidURL
+```
+
+### For Windows (PowerShell)
+
+1. Navigate to the project directory:
+```bash
+cd Check-Invalid-URLs
+```
+
+2. Run the PowerShell setup script
+```bash
+./setup_checkInvalidURL.ps1
+```
+
+3. Close and reopen PowerShell to apply the changes.
+After these steps, you can run the script from any directory by simply typing:
+```bash
+checkInvalidURL
+```
