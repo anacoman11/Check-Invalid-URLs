@@ -8,7 +8,15 @@ if [[ ! -f $pythonScript ]]; then
     exit 1
 fi
 
-profileFile="$HOME/.bashrc"
+if [ -n "$BASH_VERSION" ]; then
+    profileFile="$HOME/.bashrc"
+elif [ -n "$ZSH_VERSION" ]; then
+    profileFile="$HOME/.zshrc"
+else
+    echo "Error: Unsupported shell. Please use bash or zsh."
+    exit 1
+fi
+
 aliasCommand="alias checkInvalidURL='python3 \"$pythonScript\"'"
 
 if grep -q "checkInvalidURL" "$profileFile"; then
@@ -21,3 +29,5 @@ fi
 source "$profileFile"
 
 echo "The setup is complete! You can use the 'checkInvalidURL' command from any directory."
+
+echo "Please restart your terminal to apply the changes globally."
