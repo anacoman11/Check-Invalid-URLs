@@ -27,7 +27,8 @@ def check_url_status(url):
     }
     try:
         response = requests.get(url, headers=headers, allow_redirects=True, timeout=5)
-        return response.status_code
+        status_code = response.status_code
+        return status_code
     except requests.RequestException as e:
         print(f"Error accessing {url}: {e}")
         return 0
@@ -69,7 +70,7 @@ def check_urls_in_directory(directory):
         for url in urls:
             status_code = check_url_status(url)
 
-            if status_code != 200:
+            if "bit.ly" in url or status_code != 200:
                 print(f"{url} is invalid or returned an error (status code: {status_code})")
                 all_invalid_urls.append({
                     'File': file_path,
