@@ -27,8 +27,7 @@ def check_url_status(url):
     }
     try:
         response = requests.get(url, headers=headers, allow_redirects=True, timeout=5)
-        status_code = response.status_code
-        return status_code
+        return response.status_code
     except requests.RequestException as e:
         print(f"Error accessing {url}: {e}")
         return 0
