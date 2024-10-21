@@ -26,7 +26,7 @@ def check_url_status(url):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
     try:
-        response = requests.get(url, headers=headers, allow_redirects=True, timeout=5)
+        response = requests.get(url, headers=headers, allow_redirects=True, timeout=10)
         return response.status_code
     except requests.RequestException as e:
         print(f"Error accessing {url}: {e}")
@@ -77,8 +77,8 @@ def check_urls_in_directory(directory):
                 })
 
     if all_invalid_urls:
-        download_folder = get_download_folder_path()
-        output_file = os.path.join(download_folder, "Invalid_URLs.xlsx")
+        directory_name = os.path.basename(os.path.normpath(directory))
+        output_file = os.path.join(directory, f"{directory_name}_Invalid_URLs.xlsx")
         df = pd.DataFrame(all_invalid_urls)
         df.to_excel(output_file, index=False)
         full_path = os.path.abspath(output_file)
