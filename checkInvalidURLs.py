@@ -78,7 +78,8 @@ def check_urls_in_directory(directory):
 
     if all_invalid_urls:
         directory_name = os.path.basename(os.path.normpath(directory))
-        output_file = os.path.join(directory, f"{directory_name}_Invalid_URLs.xlsx")
+        download_folder = get_download_folder_path()
+        output_file = os.path.join(download_folder, f"{directory_name}_Invalid_URLs.xlsx")
         df = pd.DataFrame(all_invalid_urls)
         df.to_excel(output_file, index=False)
         full_path = os.path.abspath(output_file)
