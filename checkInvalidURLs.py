@@ -20,17 +20,17 @@ def extract_urls_from_file(file_path):
     cleaned_urls = [url.strip(').,<>;') for url in urls]
     return cleaned_urls
 
-
 def check_url_status(url):
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0'
     }
     try:
-        response = requests.get(url, headers=headers, allow_redirects=True, timeout=10)
+        response = requests.get(url, headers=headers, allow_redirects=True, timeout=15, verify=True)
         return response.status_code
     except requests.RequestException as e:
         print(f"Error accessing {url}: {e}")
         return 0
+
 
 
 def find_files_with_urls(directory):
