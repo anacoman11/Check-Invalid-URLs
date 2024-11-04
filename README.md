@@ -68,12 +68,19 @@ checkInvalidURL
 cd Check-Invalid-URLs
 ```
 
-2. Run the PowerShell setup script
+2. Set the execution policy:
+- Run the following command to allow script execution as Administrator 
+```bash
+Set-ExecutionPolicy RemoteSigned
+```
+- When prompted, you can press Yes to accept the change for all operations.
+
+3. Run the PowerShell setup script
 ```bash
 ./setup_checkInvalidURL.ps1
 ```
 
-3. Close and reopen PowerShell to apply the changes.
+4. Close and reopen PowerShell to apply the changes.
    
 After these steps, you can run the script from any directory by simply typing:
 ```bash
